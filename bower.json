@@ -1,0 +1,11 @@
+{
+  "name": "eosite",
+  "version": "0.1.0",
+  "dependencies": {
+    "foundation": "~5.5.1",
+    "jquery": "~2.1.3",
+    "jquery-pjax": "latest",
+    "toastr": "~2.1.0",
+    "underscore": "~1.8.3"
+  }
+}

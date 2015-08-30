@@ -1,0 +1,67 @@
+{%- macro render_item(item) %}
+    {%- if item.sub_menu %}
+        <li  class="has-dropdown{% if item.blueprint == request.blueprint %} active{% endif %}">
+            <a href="#">{% if item.title_small %}
+                <span class="hide-for-small-only">{{ item.title|safe }}</span><span
+                        class="show-for-small-only">{{ item.title_small|safe }}</span>{% else %}
+                {{ item.title|safe }}{% endif %}</a>
+            <ul class="dropdown">
+                {%- for subitem in item.sub_menu %}
+                    <li {% if subitem.endpoint == request.endpoint %}class="active"{% endif %}>
+                        <a href="{{ subitem.url }}">{{ subitem.title|safe }}</a>
+                    </li>
+                {%- endfor %}
+            </ul>
+        </li>
+    {%- else %}
+        <li {% if item.endpoint == request.endpoint or item.blueprint == request.blueprint %}class="active"{% endif %}>
+            <a href='{{ item.url }}'>{% if item.title_small %}
+                <span class="hide-for-small-only">{{ item.title|safe }}</span><span
+                        class="show-for-small-only">{{ item.title_small|safe }}</span>{% else %}
+                {{ item.title|safe }}{% endif %}
+            </a>
+        </li>
+    {%- endif %}
+{%- endmacro -%}
+
+{%- with navigation = navigation() -%}
+
+    <nav class="top-bar" data-topbar role="navigation">
+        <section class="top-bar-section">
+            <ul class="rankimg right"> {# right side #}
+              <li style="display: none" id="ajax_spinner"><a href="#"><i class="fa fa-refresh"></i></a></li>
+              {%- for item in navigation if item.right %}
+                  {{ render_item(item) }}
+              {%- endfor %}
+              {% if current_user.is_authenticated() %}
+                  <li class="has-dropdown">
+                      <a href="#">
+                       <span class="hide-for-small-only">
+                          {%- if current_user.access_level > 0 -%}
+                              <img src="{{ url_for("static",filename="img/rank/%d.png"|format(current_user.access_level)) }}">
+                          {%- endif %} {{ current_user.character_name }}
+                       </span>
+                      </a>
+                      <ul class="dropdown">
+                          <li style="visibility: hidden" class="show-for-small-only">&nbsp;</li>
+                          <li><a href="{{ url_for("login.logout") }}">Logout</a></li>
+                      </ul>
+                  </li>
+              {% else %}
+                  <li><a  style="background-color: darkgreen" href="{{ url_for("login.login") }}">Login</a></li>
+              {% endif %}
+            </ul>
+            <ul>
+                {%- if submenu %}
+                    <li class="show-for-small-only"><a id="offcanvas_toggle" href="#"><i class="fa fa-bars"></i></a></li>
+                {%- endif %}
+                <li{% if "root" == request.blueprint %} class="active"{% endif %}><a
+                      href="{{ url_for("root.index") }}">Home</a></li>
+                {%- for item in navigation if not item.right -%}
+                  {{ render_item(item) }}
+                {%- endfor -%}
+            </ul>
+        </section>
+    </nav>
+
+{%- endwith %}

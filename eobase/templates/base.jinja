@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8"/>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <title>{% block title %}Easily.Offended{% endblock %}</title>
+   {# <link href="{{ url_for("static", filename="img/favicon.ico") }}" rel="shortcut icon" type="image/x-icon"> #}
+
+   {%- assets "css_all" -%}
+      <link rel="stylesheet" href="{{ ASSET_URL }}"/>
+   {% endassets -%}
+
+   {%- assets "js_all" -%}
+      <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+   {% endassets -%}{#  <script type="application/javascript">window.igb_header = {{ check_igb_header()[0] }};</script> -#}
+</head>
+<body id="pjax-container">
+{% block body -%}
+   {%- include "_navbar.jinja" -%}
+   {%- block content %}{% endblock -%}
+{%- endblock -%}
+</body>
+</html>

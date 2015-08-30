@@ -1,0 +1,10 @@
+django
+django-debug-toolbar
+django-jinja
+django-redis-cache
+django-assets
+
+hiredis
+psycopg2
+
+-e  git+https://github.com/djsutho/django-debug-toolbar-request-history.git#egg=django-debug-toolbar-request-history

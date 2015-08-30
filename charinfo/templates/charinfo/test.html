@@ -1,0 +1,11 @@
+
+hi
+
+{% load staticfiles %}
+
+<a href="{% static "charinfo/style.css" %}">{% static "charinfo/style.css" %}</a>
+
+{% load assets %}
+{% assets "css_all" %}
+   <a href="{{ ASSET_URL }}">{{ ASSET_URL }}</a>
+{% endassets %}

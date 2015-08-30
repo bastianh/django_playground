@@ -1,0 +1,49 @@
+@import "settings";
+@import "foundation";
+@import "project_x";
+
+html {
+  background: url('/static/eobase/img/background.jpg') no-repeat center center fixed black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+  background: none;
+}
+
+.text-success {
+  color: $success-color;
+}
+
+.text-danger {
+  color: $alert-color;
+}
+
+
+.box {
+  .info {
+    background-color: $info-bg-color;
+  }
+  .warning {
+
+  }
+  .box_hl {
+    color: $secondary-color;
+    font-weight: bolder;
+    padding: 4px 6px;
+    background-color: rgba(20, 20, 20, 0.6)
+  }
+  .box_ct {
+    padding: 4px 6px;
+  }
+  border: 1px solid $panel-border-color;
+  background-color: $panel-bg;
+  margin-top: 10px;
+}
+
+
+
+
