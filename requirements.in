@@ -1,10 +1,15 @@
 django
-django-debug-toolbar
 django-jinja
 django-redis-cache
+django-redis-sessions
 django-assets
+django-debug-toolbar
 
+# c redis parser
 hiredis
+
+# database
 psycopg2
 
--e  git+https://github.com/djsutho/django-debug-toolbar-request-history.git#egg=django-debug-toolbar-request-history
+# hosting
+uwsgi

@@ -86,7 +86,7 @@ $warning-bg-color: $warning-color;
 $success-bg-color: $success-color;
 $alert-bg-color: $alert-color;
 
-@import "../bower_components/foundation/scss/foundation/functions";
+@import "../../bower_components/foundation/scss/foundation/functions";
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.

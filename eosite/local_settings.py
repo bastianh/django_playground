@@ -1,0 +1,10 @@
+
+DEBUG = True
+
+ASSETS_AUTO_BUILD = True
+
+ASSETS_DEBUG = True
+
+if ASSETS_DEBUG:
+    ASSETS_LOAD_PATH = "."
+    STATIC_ROOT = None

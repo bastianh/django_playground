@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'd$6nw&5#+i@^&rngjsc(2n4krsr_-g*b97rp53s8z%27ddw)w&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["localhost"]
 
@@ -43,11 +43,13 @@ INSTALLED_APPS = (
     'eobase',
     'charinfo',
     'django_jinja',
-    'debug_toolbar',
     'django_assets',
+    #    'debug_toolbar',
+    #    'debug_panel',
 )
 
 MIDDLEWARE_CLASSES = (
+    #    'debug_panel.middleware.DebugPanelMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -68,15 +70,19 @@ STATICFILES_FINDERS = (
 )
 
 STATIC_URL = "/static/"
-# STATIC_ROOT = "static_final/"
-
-ASSETS_DEBUG = True
+STATIC_ROOT = "static/"
 
 JINJA2_EXTENSIONS = DEFAULT_JINJA2_EXTENSIONS + [
     "webassets.ext.jinja2.AssetsExtension"
 ]
 
 ASSETS_JINJA2_EXTENSIONS = JINJA2_EXTENSIONS
+
+ASSETS_LOAD_PATH = "."
+
+ASSETS_DEBUG = False
+
+ASSETS_AUTO_BUILD = False
 
 TEMPLATES = [
     {
@@ -111,6 +117,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'eosite.wsgi.application'
 
+SESSION_ENGINE = 'redis_sessions.session'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -153,6 +160,11 @@ USE_TZ = True
 
 # debug toolbar
 
+DEBUG_TOOLBAR_PATCH_SETTINGS = True
+
+DEBUG_TOOLBAR_CONFIG = {
+    #    'JQUERY_URL': "",
+}
 
 DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.versions.VersionsPanel',
@@ -160,10 +172,9 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.settings.SettingsPanel',
     'debug_toolbar.panels.headers.HeadersPanel',
     'debug_toolbar.panels.request.RequestPanel',
-    'ddt_request_history.panels.request_history.RequestHistoryPanel',  # Here it is
     'debug_toolbar.panels.sql.SQLPanel',
-    'debug_toolbar.panels.templates.TemplatesPanel',
-    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+    # 'debug_toolbar.panels.templates.TemplatesPanel',
+    # 'debug_toolbar.panels.staticfiles.StaticFilesPanel',
     'debug_toolbar.panels.cache.CachePanel',
     'debug_toolbar.panels.signals.SignalsPanel',
     'debug_toolbar.panels.logging.LoggingPanel',

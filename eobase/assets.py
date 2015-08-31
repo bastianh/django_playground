@@ -8,15 +8,15 @@ css = Bundle(
 register('css_all', css)
 
 js = Bundle(
-    'bower_components/modernizr/modernizr.js',
-    'bower_components/jquery/dist/jquery.js',
-    'bower_components/toastr/toastr.js',
-    'bower_components/foundation/js/foundation/foundation.js',
-    'bower_components/foundation/js/foundation/foundation.topbar.js',
-    'bower_components/foundation/js/foundation/foundation.tooltip.js',
-    'bower_components/foundation/js/foundation/foundation.reveal.js',
-    'bower_components/foundation/js/foundation/foundation.offcanvas.js',
-    'bower_components/jquery-pjax/jquery.pjax.js',
+    'eobase/static/bower_components/modernizr/modernizr.js',
+    'eobase/static/bower_components/jquery/dist/jquery.js',
+    'eobase/static/bower_components/toastr/toastr.js',
+    'eobase/static/bower_components/foundation/js/foundation/foundation.js',
+    'eobase/static/bower_components/foundation/js/foundation/foundation.topbar.js',
+    'eobase/static/bower_components/foundation/js/foundation/foundation.tooltip.js',
+    'eobase/static/bower_components/foundation/js/foundation/foundation.reveal.js',
+    'eobase/static/bower_components/foundation/js/foundation/foundation.offcanvas.js',
+    'eobase/static/bower_components/jquery-pjax/jquery.pjax.js',
     'eobase/static/eobase/js/page_init.js',
     filters='uglifyjs', output='gen/main.js')
 

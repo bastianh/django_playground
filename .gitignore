@@ -2,6 +2,7 @@ db.sqlite3
 dump.rdb
 .webassets-cache
 eobase/static/bower_components
+static/*
 
 ### IPythonNotebook template
 # Temporary data
@@ -73,3 +74,4 @@ docs/_build/
 
 # PyBuilder
 target/
+
