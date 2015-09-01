@@ -1,26 +1,25 @@
+from time import sleep
 from django.core.cache import cache
 from django.template.response import TemplateResponse
 
 
 def index(request):
     cache.add('num', 1)
-    cache.incr('num')
-    num = cache.get('num')
+    num = cache.incr('num')
     # return render(request, "charinfo/test.html")
     # return render(request, "charinfo/index.jinja", {'num': num})
-    return TemplateResponse(request, "charinfo/index.jinja", {'num': num})
+    return TemplateResponse(request, "charinfo/index.jinja", {'num': num, 'page': 1})
 
 
 def index2(request):
     cache.add('num', 1)
-    cache.incr('num')
-    num = cache.get('num')
+    num = cache.incr('num', 1)
     # return render(request, "charinfo/test.html")
-    return TemplateResponse(request, "charinfo/index2.jinja", {'num': num})
+    return TemplateResponse(request, "charinfo/index.jinja", {'num': num, 'page': 2})
 
 
 def index3(request):
     cache.add('num', 1)
-    cache.incr('num')
-    num = cache.get('num')
-    return TemplateResponse(request, "charinfo/index3.jinja", {'num': num})
+    num = cache.incr('num')
+    sleep(1)
+    return TemplateResponse(request, "charinfo/index.jinja", {'num': num, 'page': 3})

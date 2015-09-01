@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'd$6nw&5#+i@^&rngjsc(2n4krsr_-g*b97rp53s8z%27ddw)w&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["localhost"]
 
@@ -80,9 +80,13 @@ ASSETS_JINJA2_EXTENSIONS = JINJA2_EXTENSIONS
 
 ASSETS_LOAD_PATH = "."
 
-ASSETS_DEBUG = False
+ASSETS_DEBUG = True
+if ASSETS_DEBUG:
+    STATIC_ROOT = None
 
-ASSETS_AUTO_BUILD = False
+ASSETS_AUTO_BUILD = True
+
+JINJA2_BYTECODE_CACHE_NAME = "default"
 
 TEMPLATES = [
     {
@@ -94,6 +98,7 @@ TEMPLATES = [
             "auto_reload": DEBUG,
             "environment": "eosite.jinja2.ConfiguredJinja2Environment",
             "extensions": JINJA2_EXTENSIONS,
+            "autoescape": True,
             "globals": {
                 "navigation": "eosite.utils.templates.navigation",
                 "current_user": "eosite.utils.templates.current_user",
@@ -166,26 +171,3 @@ DEBUG_TOOLBAR_CONFIG = {
     #    'JQUERY_URL': "",
 }
 
-DEBUG_TOOLBAR_PANELS = [
-    'debug_toolbar.panels.versions.VersionsPanel',
-    'debug_toolbar.panels.timer.TimerPanel',
-    'debug_toolbar.panels.settings.SettingsPanel',
-    'debug_toolbar.panels.headers.HeadersPanel',
-    'debug_toolbar.panels.request.RequestPanel',
-    'debug_toolbar.panels.sql.SQLPanel',
-    # 'debug_toolbar.panels.templates.TemplatesPanel',
-    # 'debug_toolbar.panels.staticfiles.StaticFilesPanel',
-    'debug_toolbar.panels.cache.CachePanel',
-    'debug_toolbar.panels.signals.SignalsPanel',
-    'debug_toolbar.panels.logging.LoggingPanel',
-    'debug_toolbar.panels.profiling.ProfilingPanel',
-    'debug_toolbar.panels.redirects.RedirectsPanel',
-]
-
-
-#######################################
-
-try:
-    from .local_settings import *
-except ImportError as e:
-    pass

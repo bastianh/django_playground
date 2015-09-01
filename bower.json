@@ -2,7 +2,8 @@
   "name": "eosite",
   "version": "0.1.0",
   "dependencies": {
-    "foundation": "~5.5.1",
+    "bootstrap-sass": "~3.3.5",
+    "components-font-awesome": "~4.4.0",
     "jquery": "~2.1.3",
     "jquery-pjax": "latest",
     "toastr": "~2.1.0",

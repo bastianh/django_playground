@@ -1,9 +1,11 @@
 {% extends "layout.jinja" %}
 
 {% block content %}
-   <div>hi {{ template_base }}</div>
-   <div>hi djantem {{ user }} {{ num }}</div>
-   <a class="button success" href="{{ url('index2') }}" data-pjax>2</a>
-   <a class="button success" href="{{ url('index3') }}" data-pjax>3</a>
-   <a class="button warning" href="{{ url('admin:index') }}">Admin</a>
+<div>hi {{ template_base }}</div>
+{{ _('Hello %(name)s', name=template_base) }}
+    <div>hi djantem {{ user }} {{ num }}</div>
+    <a class="btn {{ "btn-success" if page==1 else "btn-default" }}" href="{{ url('index') }}" data-pjax>1</a>
+    <a class="btn {{ "btn-success" if page==2 else "btn-default" }}" href="{{ url('index2') }}" data-pjax>2</a>
+    <a class="btn {{ "btn-success" if page==3 else "btn-default" }}" href="{{ url('index3') }}" data-pjax>3</a>
+    <a class="btn btn-info" href="{{ url('admin:index') }}">Admin</a>
 {% endblock %}

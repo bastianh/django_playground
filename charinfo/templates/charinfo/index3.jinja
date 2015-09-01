@@ -1,9 +1,0 @@
-{% extends "layout.jinja" %}
-
-{% block content %}
-   <div>hi {{ template_base }}</div>
-   <div>hi djantem {{ user }} {{ num }}</div>
-   <a class="button success" href="{{ url('index') }}" data-pjax>1</a>
-   <a class="button success" href="{{ url('index2') }}" data-pjax>2</a>
-   <a class="button warning" href="{{ url('admin:index') }}">Admin</a>
-{% endblock %}
