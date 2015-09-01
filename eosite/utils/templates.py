@@ -1,14 +1,9 @@
-__author__ = 'bastianh'
+from django.conf import settings
+from markupsafe import Markup
 
 
-def navigation():
-    return ""
-
-
-class current_user(object):
-    @staticmethod
-    def is_authenticated():
-        return False
-
-def url_for(*args,**kwargs):
-    return ""
+def swampdragon_settings():
+    root_url = getattr(settings, 'DRAGON_URL') or 'http://localhost:9999/'
+    if not root_url.endswith('/'):
+        root_url += '/'
+    return Markup('<script type="text/javascript" src="{}settings.js"></script>'.format(root_url))

@@ -3,13 +3,9 @@ django-jinja
 django-redis-cache
 django-redis-sessions
 django-assets
-django-debug-toolbar
 
-# c redis parser
+swampdragon
 hiredis
-
-# database
 psycopg2
-
-# hosting
 uwsgi
+cssmin

@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'd$6nw&5#+i@^&rngjsc(2n4krsr_-g*b97rp53s8z%27ddw)w&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["localhost"]
 
@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'swampdragon',
     'eobase',
     'charinfo',
     'django_jinja',
@@ -78,11 +79,7 @@ JINJA2_EXTENSIONS = DEFAULT_JINJA2_EXTENSIONS + [
 
 ASSETS_JINJA2_EXTENSIONS = JINJA2_EXTENSIONS
 
-ASSETS_LOAD_PATH = "."
-
-ASSETS_DEBUG = True
-if ASSETS_DEBUG:
-    STATIC_ROOT = None
+ASSETS_DEBUG = DEBUG
 
 ASSETS_AUTO_BUILD = True
 
@@ -96,13 +93,11 @@ TEMPLATES = [
             "match_extension": ".jinja",
             "newstyle_gettext": True,
             "auto_reload": DEBUG,
-            "environment": "eosite.jinja2.ConfiguredJinja2Environment",
+            "environment": "eosite.utils.jinja2.ConfiguredJinja2Environment",
             "extensions": JINJA2_EXTENSIONS,
             "autoescape": True,
             "globals": {
-                "navigation": "eosite.utils.templates.navigation",
-                "current_user": "eosite.utils.templates.current_user",
-                "url_for": "eosite.utils.templates.url_for",
+                "swampdragon_settings": "eosite.utils.templates.swampdragon_settings",
             },
         }
     },
@@ -162,7 +157,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+# swampdragon
 
+SWAMP_DRAGON_CONNECTION = ('swampdragon.connections.sockjs_connection.DjangoSubscriberConnection', '/data')
+DRAGON_URL = "http://localhost:9999/"
 # debug toolbar
 
 DEBUG_TOOLBAR_PATCH_SETTINGS = True

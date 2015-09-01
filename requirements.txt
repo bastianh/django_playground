@@ -4,9 +4,8 @@
 #
 #    pip-compile requirements.in
 #
--e git+https://github.com/djsutho/django-debug-toolbar-request-history.git#egg=django-debug-toolbar-request-history
+cssmin==0.2.0
 django-assets==0.11
-django-debug-toolbar==1.3.2
 django-jinja==1.4.1
 django-redis-cache==1.6.0
 django-redis-sessions==0.5.0
@@ -15,7 +14,12 @@ hiredis==0.2.0
 jinja2==2.8               # via django-jinja
 markupsafe==0.23          # via jinja2
 psycopg2==2.6.1
-redis==2.10.3             # via django-redis-cache, django-redis-sessions
-sqlparse==0.1.16          # via django-debug-toolbar
+python-dateutil==2.4.2    # via swampdragon
+redis==2.10.3             # via django-redis-cache, django-redis-sessions, swampdragon
+six==1.9.0                # via python-dateutil
+sockjs-tornado==1.0.1     # via swampdragon
+swampdragon==0.4.2.2
+tornado-redis==2.4.18     # via swampdragon
+tornado==4.2.1            # via sockjs-tornado, swampdragon
 uwsgi==2.0.11.1
 webassets==0.11           # via django-assets

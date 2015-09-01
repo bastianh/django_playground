@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    {# <link rel="icon" href="../../favicon.ico"> #}
 
     <title>{{ title or "" }}</title>
 
@@ -21,13 +21,15 @@
     <![endif]-->
 </head>
 <body>
-<div id="pjax-container">
-    {% block body -%}
-    {%- endblock -%}
+
+<div id="pjax">
+    {%- block body %}{% endblock -%}
 </div>
+{{ swampdragon_settings() }}
 {%- assets "js_all" -%}
     <script type="text/javascript" src="{{ ASSET_URL }}"></script>
 {% endassets -%}
-<div id="ajax_spinner" style="position:absolute;right: 0;bottom:0;display: none;"><i class="fa fa-refresh fa-spin fa-2x"></i></div>
+<div id="ajax_spinner" style="position:absolute;right: 0;bottom:0;display: none;"><i
+        class="fa fa-refresh fa-spin fa-2x"></i></div>
 </body>
 </html>

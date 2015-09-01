@@ -21,5 +21,4 @@ def index2(request):
 def index3(request):
     cache.add('num', 1)
     num = cache.incr('num')
-    sleep(1)
     return TemplateResponse(request, "charinfo/index.jinja", {'num': num, 'page': 3})

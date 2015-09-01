@@ -2,6 +2,8 @@
 
 {% block content %}
 <div>hi {{ template_base }}</div>
+
+{{ static( 'swampdragon/js/dist/swampdragon.min.js' ) }}
 {{ _('Hello %(name)s', name=template_base) }}
     <div>hi djantem {{ user }} {{ num }}</div>
     <a class="btn {{ "btn-success" if page==1 else "btn-default" }}" href="{{ url('index') }}" data-pjax>1</a>
