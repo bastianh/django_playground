@@ -1,7 +1,37 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.conf import settings
 from importlib import import_module
+
+from django.conf import settings
+
+CONFIG_DEFAULTS = {}
+
+USER_CONFIG = getattr(settings, 'CHROME_PANEL_CONFIG', {
+    "RENDER_PANELS": None,
+    "RESULTS_CACHE_SIZE": 30,
+})
+
+CONFIG = CONFIG_DEFAULTS.copy()
+CONFIG.update(USER_CONFIG)
+
+PANELS_DEFAULTS = [
+    'debug_toolbar.panels.versions.VersionsPanel',
+    'debug_toolbar.panels.timer.TimerPanel',
+    'debug_toolbar.panels.settings.SettingsPanel',
+    'debug_toolbar.panels.headers.HeadersPanel',
+    'debug_toolbar.panels.request.RequestPanel',
+    'debug_toolbar.panels.sql.SQLPanel',
+    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+    'debug_toolbar.panels.templates.TemplatesPanel',
+    'debug_toolbar.panels.cache.CachePanel',
+    'debug_toolbar.panels.logging.LoggingPanel',
+    'debug_toolbar.panels.redirects.RedirectsPanel',
+]
+
+try:
+    PANELS = list(settings.CHROME_PANELS)
+except AttributeError:
+    PANELS = PANELS_DEFAULTS
 
 
 def is_middleware_class(middleware_class, middleware_path):

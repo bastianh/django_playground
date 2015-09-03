@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'd$6nw&5#+i@^&rngjsc(2n4krsr_-g*b97rp53s8z%27ddw)w&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["localhost"]
 
@@ -45,12 +45,13 @@ INSTALLED_APPS = (
     'charinfo',
     'django_jinja',
     'django_assets',
+    'chrome_panel',
+    'debug_toolbar'
     #    'debug_toolbar',
     #    'debug_panel',
 )
 
 MIDDLEWARE_CLASSES = (
-    #    'debug_panel.middleware.DebugPanelMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
